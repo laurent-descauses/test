@@ -16,6 +16,10 @@ namespace WebApplication1.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            using(var svc1= new ServiceReference1.Service1Client())
+            {
+                ViewBag.Message = "Toto " + svc1.GetData(DateTime.Now.Second);
+            }
 
             return View();
         }
